@@ -1,14 +1,3 @@
----
-title: Ethernaut靶场刷题记录
-date: 2025-04-01 23:18:25
-tags: blockchain
-
----
-
-持续更新ing
-
-<!-- more -->
-
 # 1，Hello Ethernaut
 
 跟着提示输入就行，这一节只是简单教你如何在Ethernaut网站使用控制台和合约进行交互，包括查看合约详情信息、调用合约内方法等。
@@ -103,7 +92,7 @@ withdraw方法由onlyOwner修改器控制，内容为取走合约内所有ether�
 
 再来看下面这个receive函数，有人向合约发送一些以太坊而没有在交易的 “数据”字段中指定任何东西时，receive 就会被 自动调用。那么receive就是接收到外部转账的时候会调用这个方法并执行里面的内容。那么思路已经很清晰了。首先调用contribute函数传一个小于0.001eth，这样发送者就会存在贡献，然后从外部向合约发送eth触发receive函数，使我们自己变为owner，在withdraw提取所有eth即可。这里提供两种解题方法。
 
-## 1,f12直接交互
+## f12直接交互
 
 交互代码如下
 
@@ -115,9 +104,3 @@ contract.withdraw()
 ```
 
 就像上面讲的那样。第一步首先用小于0.001eth向合约捐献，调用contribute()函数，使我们拥有贡献值，然后从外部直接向合约发送1wei，触发recvie函数，即可成为owner。最后调用withdraw即可
-
-## 2,solidity代码交互
-
-刚开始学solidity，刚好多用用熟悉一下。
-
-首先把代码全复制粘贴到remix.ide里，AT address
